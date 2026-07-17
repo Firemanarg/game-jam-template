@@ -14,10 +14,18 @@ config/name="Game Jam Template"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FDLog="*uid://ch7hcmdpymwmi"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fire_droid_log/plugin.cfg")
 
 [physics]
 
