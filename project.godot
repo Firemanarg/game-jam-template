@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FDLog="*uid://ch7hcmdpymwmi"
+Action="*uid://bo21avqm1v2ko"
 
 [display]
 
@@ -25,7 +26,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fire_droid_log/plugin.cfg")
+enabled=PackedStringArray("res://addons/fire_droid_action_manager/plugin.cfg", "res://addons/fire_droid_log/plugin.cfg")
 
 [physics]
 
