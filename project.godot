@@ -26,7 +26,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fire_droid_action_manager/plugin.cfg", "res://addons/fire_droid_log/plugin.cfg")
+enabled=PackedStringArray("res://addons/fire_droid_action_manager/plugin.cfg", "res://addons/fire_droid_log/plugin.cfg", "res://addons/fire_droid_transition/plugin.cfg")
 
 [physics]
 

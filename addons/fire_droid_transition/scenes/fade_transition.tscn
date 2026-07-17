@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bojou74wodnd1"]
+
+[ext_resource type="Script" uid="uid://cgsn00fava3cx" path="res://addons/fire_droid_transition/scenes/fade_transition.gd" id="1_suks4"]
+
+[sub_resource type="Gradient" id="Gradient_suks4"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uspby"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_suks4")
+
+[node name="FadeTransition" type="CanvasLayer"]
+script = ExtResource("1_suks4")
+color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://bcjijvcuwpin4"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_uspby")
