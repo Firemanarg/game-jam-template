@@ -7,11 +7,14 @@ func _enable_plugin() -> void:
 	add_autoload_singleton(
 			"Action",
 			"res://addons/fire_droid_action_manager/scripts/action_manager.gd")
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _disable_plugin() -> void:
 	remove_autoload_singleton("Action")
 	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _enter_tree() -> void:
@@ -26,10 +29,12 @@ func _enter_tree() -> void:
 			"FDActionManager/override_actions_script_path", TYPE_STRING, "",
 			{ &"hint": PROPERTY_HINT_FILE, &"hint_string": "*.gd"})
 	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _exit_tree() -> void:
-	pass
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 # ------------------------------------------------------------------------------
 

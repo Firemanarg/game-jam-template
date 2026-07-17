@@ -6,10 +6,14 @@ extends EditorPlugin
 func _enable_plugin() -> void:
 	add_autoload_singleton(
 			"FDLog", "res://addons/fire_droid_log/scripts/fd_log.gd")
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _disable_plugin() -> void:
 	remove_autoload_singleton("FDLog")
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _enter_tree() -> void:
@@ -24,12 +28,12 @@ func _enter_tree() -> void:
 	_setup_custom_setting(
 			FDLog.SettingPath.LOG_FILE_NAME_PREFIX, TYPE_STRING, "")
 	ProjectSettings.save()
-	pass
+	ProjectSettings.save_custom("override.cfg")
 
 
 func _exit_tree() -> void:
 	ProjectSettings.save()
-	pass
+	ProjectSettings.save_custom("override.cfg")
 
 # ------------------------------------------------------------------------------
 
