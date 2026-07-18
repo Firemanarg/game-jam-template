@@ -157,16 +157,16 @@ func _is_action_allowed(context: StringName, action_name: StringName) -> bool:
 func _setup() -> void:
 	var default_action_list = (
 			ProjectSettings.get_setting_with_override(
-					"Action/default_actions_script_path"))
+					"FDActionManager/default_actions_script_path"))
 	var enable_default_actions = (
 			ProjectSettings.get_setting_with_override(
-					"Action/enable_default_actions"))
+					"FDActionManager/enable_default_actions"))
 	var override_action_list = (
 			ProjectSettings.get_setting_with_override(
-					"Action/override_actions_script_path"))
+					"FDActionManager/override_actions_script_path"))
 	var enable_override_actions = (
 			ProjectSettings.get_setting_with_override(
-					"Action/enable_override_actions"))
+					"FDActionManager/enable_override_actions"))
 	if default_action_list == null:
 		FDLog.log_message(
 				"[ActionManager]: Default Action List is not defined.",
@@ -189,11 +189,13 @@ func _setup() -> void:
 		enable_override_actions = true
 	if default_action_list:
 		_default_actions = load(default_action_list).new()
+		add_child(_default_actions)
 	else:
 		_default_actions = null
 	_enable_default_actions = enable_default_actions
 	if override_action_list:
 		_override_actions = load(override_action_list).new()
+		add_child(_override_actions)
 	else:
 		_override_actions = null
 	_enable_override_actions = enable_override_actions
