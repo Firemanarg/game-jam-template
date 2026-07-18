@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://boowktjmcq156"]
+
+[ext_resource type="Script" uid="uid://d2kgy047jnckg" path="res://scenes/gui/credits_screen.gd" id="1_mchai"]
+[ext_resource type="Script" uid="uid://rhn8ge21uhsj" path="res://addons/fire_droid_action_manager/scripts/components/action_button.gd" id="2_myces"]
+
+[node name="CreditsScreen" type="CanvasLayer" unique_id=1006484742]
+script = ExtResource("1_mchai")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=479659811]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1935870803]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1577489371]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=272879933]
+layout_mode = 2
+
+[node name="LabelCreditsTitle" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" unique_id=1233243067]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnActionButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" unique_id=422966460]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Return"
+script = ExtResource("2_myces")
+context = &"credits_screen"
+pressed_action = &"return"
+metadata/_custom_type_script = "uid://rhn8ge21uhsj"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=986637306]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=1709300521]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Person 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=1405001209]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Person 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=1855544271]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Person 3"
+horizontal_alignment = 1
+vertical_alignment = 1

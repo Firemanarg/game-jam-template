@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ssroffps0cp7"]
+
+[ext_resource type="Script" uid="uid://cq0qveai6ydqq" path="res://scenes/gui/main_screen.gd" id="1_h0pki"]
+[ext_resource type="Script" uid="uid://rhn8ge21uhsj" path="res://addons/fire_droid_action_manager/scripts/components/action_button.gd" id="2_8jw57"]
+
+[node name="MainScreen" type="CanvasLayer" unique_id=1006484742]
+script = ExtResource("1_h0pki")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=479659811]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1935870803]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1577489371]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=272879933]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="LabelGameTitle" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" unique_id=1233243067]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Jam Template"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSubtitle" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" unique_id=123446248]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "A game by Firemanarg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=986637306]
+layout_mode = 2
+
+[node name="PlayActionButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=422966460]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Play"
+script = ExtResource("2_8jw57")
+context = &"main_screen"
+pressed_action = &"play"
+metadata/_custom_type_script = "uid://rhn8ge21uhsj"
+
+[node name="SettingsActionButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=496729715]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+script = ExtResource("2_8jw57")
+context = &"main_screen"
+pressed_action = &"settings"
+metadata/_custom_type_script = "uid://rhn8ge21uhsj"
+
+[node name="CreditsActionButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=1257538299]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+script = ExtResource("2_8jw57")
+context = &"main_screen"
+pressed_action = &"credits"
+metadata/_custom_type_script = "uid://rhn8ge21uhsj"
+
+[node name="QuitActionButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer2" unique_id=991701990]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+script = ExtResource("2_8jw57")
+context = &"main_screen"
+pressed_action = &"quit"
+metadata/_custom_type_script = "uid://rhn8ge21uhsj"
