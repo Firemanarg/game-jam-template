@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://du4av3flq64jc"]
+
+[ext_resource type="PackedScene" uid="uid://bssw5m2q0nooo" path="res://addons/fire_droid_transition/scenes/v_dots_halftone_transition.tscn" id="1_aonc1"]
+[ext_resource type="Shader" uid="uid://bv1je32s5x5tq" path="res://addons/fire_droid_transition/shaders/v_dots_halftone.gdshader" id="2_dodqx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22g0s"]
+resource_local_to_scene = true
+shader = ExtResource("2_dodqx")
+shader_parameter/invert_circles = true
+shader_parameter/aspect_ratio = 1.5
+shader_parameter/dots = 16.0
+shader_parameter/_min = 0.0
+shader_parameter/_max = 1.0
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/height = 0.5
+
+[node name="VDotsHalftoneTransition" unique_id=1939225980 instance=ExtResource("1_aonc1")]
+dots_density = 16.0
+
+[node name="ColorRect" parent="." index="0" unique_id=1710929294]
+material = SubResource("ShaderMaterial_22g0s")

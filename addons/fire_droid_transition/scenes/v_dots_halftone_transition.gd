@@ -2,8 +2,8 @@
 extends FDTransition
 
 
-@export var dots_size: float = 10.0:
-	set = _set_dots_size
+@export var dots_density: float = 10.0:
+	set = _set_dots_density
 @export var invert_circles: bool = true:
 	set = _set_invert_circles
 @export var color: Color = Color.BLACK:
@@ -18,13 +18,13 @@ func _ready() -> void:
 
 func _setup_play_in() -> void:
 	color_rect.material.set_shader_parameter(&"invert_circles", invert_circles)
-	color_rect.material.set_shader_parameter(&"dots_size", dots_size)
+	color_rect.material.set_shader_parameter(&"dots", dots_density)
 	color_rect.material.set_shader_parameter(&"height", _get_min_height())
 
 
 func _setup_play_out() -> void:
 	color_rect.material.set_shader_parameter(&"invert_circles", invert_circles)
-	color_rect.material.set_shader_parameter(&"dots_size", dots_size)
+	color_rect.material.set_shader_parameter(&"dots", dots_density)
 	color_rect.material.set_shader_parameter(&"height", _get_max_height())
 
 
@@ -62,7 +62,7 @@ func _set_color(value: Color) -> void:
 		color_rect.material.set_shader_parameter(&"color", color)
 
 
-func _set_dots_size(value: float) -> void:
-	dots_size = value
+func _set_dots_density(value: float) -> void:
+	dots_density = value
 	if is_node_ready():
-		color_rect.material.set_shader_parameter(&"dots_size", dots_size)
+		color_rect.material.set_shader_parameter(&"dots", dots_density)

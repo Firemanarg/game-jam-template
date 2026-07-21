@@ -35,7 +35,7 @@ vertical_alignment = 1
 [node name="LabelGameSubtitle" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer" unique_id=123446248]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "A game by Firemanarg"
+text = "A template by Firemanarg"
 horizontal_alignment = 1
 vertical_alignment = 1
 

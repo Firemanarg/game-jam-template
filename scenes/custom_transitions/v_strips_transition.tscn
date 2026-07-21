@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d21b1mft4706r"]
+
+[ext_resource type="PackedScene" uid="uid://b1nfemikbqm3m" path="res://addons/fire_droid_transition/scenes/v_strips_transition.tscn" id="1_yhifj"]
+[ext_resource type="Shader" uid="uid://bsc8id6ptwjal" path="res://addons/fire_droid_transition/shaders/v_strips.gdshader" id="2_l8g7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhifj"]
+resource_local_to_scene = true
+shader = ExtResource("2_l8g7x")
+shader_parameter/strips_width = 20.0
+shader_parameter/ratio = 0.0
+shader_parameter/color_1 = Color(1, 1, 1, 1)
+shader_parameter/color_2 = Color(0, 0, 0, 1)
+
+[node name="VStripsTransition" unique_id=1353246283 instance=ExtResource("1_yhifj")]
+layer = 1024
+
+[node name="ColorRect" parent="." index="0" unique_id=2028187005]
+material = SubResource("ShaderMaterial_yhifj")
