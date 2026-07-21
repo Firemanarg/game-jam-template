@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dvwyl74o1x6ie"]
+
+[ext_resource type="PackedScene" uid="uid://bojou74wodnd1" path="res://addons/fire_droid_transition/scenes/fade_transition.tscn" id="1_t3x6h"]
+
+[node name="FadeTransition" unique_id=1872762936 instance=ExtResource("1_t3x6h")]
+layer = 1024
+duration_in = 1.0
+duration_out = 1.0
