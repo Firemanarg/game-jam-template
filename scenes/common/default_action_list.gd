@@ -40,7 +40,8 @@ func _init() -> void:
 #region Common Methods
 func _transition_to_file(
 		transition_scene: PackedScene,
-		filepath: String) -> void:
+		filepath: String,
+		callback: Callable = func(): pass) -> void:
 	var transition: FDTransition = null
 	if transition_scene:
 		transition = transition_scene.instantiate()
@@ -51,7 +52,12 @@ func _transition_to_file(
 		get_tree().change_scene_to_file(filepath)
 	transition.layer = 1024 # Optional: Keep if you want the transition to overlay all layers
 	add_child(transition)
-	await transition.play(get_tree().change_scene_to_file.bind(filepath))
+	await transition.play(
+		func():
+			get_tree().change_scene_to_file(filepath)
+			await get_tree().scene_changed
+			callback.call()
+	)
 	transition.queue_free()
 #endregion
 
