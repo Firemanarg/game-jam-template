@@ -214,4 +214,12 @@ class ActionResponse extends Resource:
 
 
 	func execute(args: Array) -> void:
+		if not _callable.get_argument_count() == args.size():
+			FDLog.log_message(
+					"[ActionResponse]: Executing action method with different "
+					+ "arguments count (expected: %d / received: %d). " % [
+							_callable.get_argument_count(),
+							args.size(),
+					] + "Unexpected behaviours may occur.",
+					FDLog.LogLevel.WARNING)
 		_callable.callv(args)
