@@ -1,6 +1,7 @@
 @tool
 extends FDTransition
 
+# ------------------------------------------------------------------------------
 
 @export var dots_density: float = 10.0:
 	set = _set_dots_density
@@ -11,10 +12,7 @@ extends FDTransition
 
 @onready var color_rect: ColorRect = get_node("ColorRect")
 
-
-func _ready() -> void:
-	pass
-
+# ------------------------------------------------------------------------------
 
 func _setup_play_in() -> void:
 	color_rect.material.set_shader_parameter(&"invert_circles", invert_circles)
@@ -37,6 +35,7 @@ func _on_play_out(ratio: float) -> void:
 	var height: float = lerp(_get_min_height(), _get_max_height(), ratio)
 	color_rect.material.set_shader_parameter(&"height", height)
 
+# ------------------------------------------------------------------------------
 
 func _get_min_height() -> float:
 	const MIN_HEIGHT_DEFAULT: float = -0.5

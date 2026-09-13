@@ -1,6 +1,7 @@
 @tool
 extends FDTransition
 
+# ------------------------------------------------------------------------------
 
 @export var color_1: Color = Color.WHITE:
 	set = _set_color_1
@@ -11,10 +12,7 @@ extends FDTransition
 
 @onready var color_rect: ColorRect = get_node("ColorRect")
 
-
-func _ready() -> void:
-	pass
-
+# ------------------------------------------------------------------------------
 
 func _setup_play_in() -> void:
 	pass
@@ -31,6 +29,7 @@ func _on_play_in(ratio: float) -> void:
 func _on_play_out(ratio: float) -> void:
 	color_rect.material.set_shader_parameter(&"ratio", ratio)
 
+# ------------------------------------------------------------------------------
 
 func _set_color_1(value: Color) -> void:
 	color_1 = value

@@ -10,14 +10,6 @@ func _enable_plugin() -> void:
 	ProjectSettings.save()
 	ProjectSettings.save_custom("override.cfg")
 
-
-func _disable_plugin() -> void:
-	remove_autoload_singleton("Action")
-	ProjectSettings.save()
-	ProjectSettings.save_custom("override.cfg")
-
-
-func _enter_tree() -> void:
 	_setup_custom_setting(
 			"FDActionManager/enable_default_actions", TYPE_BOOL, true)
 	_setup_custom_setting(
@@ -28,6 +20,36 @@ func _enter_tree() -> void:
 	_setup_custom_setting(
 			"FDActionManager/override_actions_script_path", TYPE_STRING, "",
 			{ &"hint": PROPERTY_HINT_FILE, &"hint_string": "*.gd"})
+
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
+
+
+func _disable_plugin() -> void:
+	remove_autoload_singleton("Action")
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
+
+
+func _enter_tree() -> void:
+	if not ProjectSettings.has_setting("FDActionManager/enable_default_actions"):
+		_setup_custom_setting(
+				"FDActionManager/enable_default_actions", TYPE_BOOL, true)
+
+	if not ProjectSettings.has_setting("FDActionManager/default_actions_script_path"):
+		_setup_custom_setting(
+				"FDActionManager/default_actions_script_path", TYPE_STRING, "",
+				{ &"hint": PROPERTY_HINT_FILE, &"hint_string": "*.gd"})
+
+	if not ProjectSettings.has_setting("FDActionManager/enable_override_actions"):
+		_setup_custom_setting(
+				"FDActionManager/enable_override_actions", TYPE_BOOL, true)
+
+	if not ProjectSettings.has_setting("FDActionManager/override_actions_script_path"):
+		_setup_custom_setting(
+				"FDActionManager/override_actions_script_path", TYPE_STRING, "",
+				{ &"hint": PROPERTY_HINT_FILE, &"hint_string": "*.gd"})
+
 	ProjectSettings.save()
 	ProjectSettings.save_custom("override.cfg")
 
@@ -44,7 +66,7 @@ func _setup_custom_setting(
 		initial_value: Variant,
 		args: Dictionary = {},
 		is_basic: bool = true) -> void:
-	if not ProjectSettings.get_setting(path):
+	if not ProjectSettings.has_setting(path):
 		ProjectSettings.set_setting(path, initial_value)
 	ProjectSettings.set_initial_value(path, initial_value)
 	ProjectSettings.add_property_info({
