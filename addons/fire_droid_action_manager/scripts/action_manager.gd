@@ -155,45 +155,48 @@ func _is_action_allowed(context: StringName, action_name: StringName) -> bool:
 
 
 func _setup() -> void:
-	var default_action_list = (
-			ProjectSettings.get_setting_with_override(
-					"FDActionManager/default_actions_script_path"))
-	var enable_default_actions = (
-			ProjectSettings.get_setting_with_override(
-					"FDActionManager/enable_default_actions"))
-	var override_action_list = (
-			ProjectSettings.get_setting_with_override(
-					"FDActionManager/override_actions_script_path"))
-	var enable_override_actions = (
-			ProjectSettings.get_setting_with_override(
-					"FDActionManager/enable_override_actions"))
-	if default_action_list == null:
-		FDLog.log_message(
-				"[ActionManager]: Default Action List is not defined.",
-				FDLog.LogLevel.NOTICE)
-	if enable_default_actions == null:
-		FDLog.log_message(
+	var default_action_list: String = ""
+	var enable_default_actions: bool = true
+	var override_action_list: String = ""
+	var enable_override_actions: bool = true
+
+	if ProjectSettings.has_setting("FDActionManager/default_actions_script_path"):
+		default_action_list = ProjectSettings.get_setting_with_override(
+				"FDActionManager/default_actions_script_path")
+	else:
+		FDLog.log_notc("[ActionManager]: Default Action List is not defined.")
+
+	if ProjectSettings.has_setting("FDActionManager/enable_default_actions"):
+		enable_default_actions = ProjectSettings.get_setting_with_override(
+				"FDActionManager/enable_default_actions")
+	else:
+		FDLog.log_notc(
 				"[ActionManager]: Flag 'enable_default_actions' not found. "
-				+ "Setting it to 'true'.",
-				FDLog.LogLevel.WARNING)
-		enable_default_actions = true
-	if override_action_list == null:
-		FDLog.log_message(
-				"[ActionManager]: Override Action List is not defined.",
-				FDLog.LogLevel.NOTICE)
-	if enable_override_actions == null:
-		FDLog.log_message(
+				+ "Setting it to 'true'.")
+
+	if ProjectSettings.has_setting("FDActionManager/override_actions_script_path"):
+		override_action_list = ProjectSettings.get_setting_with_override(
+				"FDActionManager/override_actions_script_path")
+	else:
+		FDLog.log_notc("[ActionManager]: Override Action List is not defined.")
+
+
+	if ProjectSettings.has_setting("FDActionManager/enable_override_actions"):
+		enable_override_actions = ProjectSettings.get_setting_with_override(
+				"FDActionManager/enable_override_actions")
+	else:
+		FDLog.log_notc(
 				"[ActionManager]: Flag 'enable_override_actions' not found. "
-				+ "Setting it to 'true'.",
-				FDLog.LogLevel.WARNING)
-		enable_override_actions = true
-	if default_action_list:
+				+ "Setting it to 'true'.")
+
+	if not default_action_list.is_empty():
 		_default_actions = load(default_action_list).new()
 		add_child(_default_actions)
 	else:
 		_default_actions = null
 	_enable_default_actions = enable_default_actions
-	if override_action_list:
+
+	if not override_action_list.is_empty():
 		_override_actions = load(override_action_list).new()
 		add_child(_override_actions)
 	else:

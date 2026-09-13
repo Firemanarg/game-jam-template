@@ -9,14 +9,6 @@ func _enable_plugin() -> void:
 	ProjectSettings.save()
 	ProjectSettings.save_custom("override.cfg")
 
-
-func _disable_plugin() -> void:
-	remove_autoload_singleton("FDLog")
-	ProjectSettings.save()
-	ProjectSettings.save_custom("override.cfg")
-
-
-func _enter_tree() -> void:
 	_setup_custom_setting(FDLog.SettingPath.PRINT_LOG_LEVEL, TYPE_BOOL, true)
 	for level: FDLog.LogLevel in FDLog.LogLevel.values():
 		_setup_custom_setting(
@@ -27,6 +19,32 @@ func _enter_tree() -> void:
 			TYPE_STRING, "", { &"hint": PROPERTY_HINT_GLOBAL_DIR })
 	_setup_custom_setting(
 			FDLog.SettingPath.LOG_FILE_NAME_PREFIX, TYPE_STRING, "")
+
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
+
+
+func _disable_plugin() -> void:
+	remove_autoload_singleton("FDLog")
+	ProjectSettings.save()
+	ProjectSettings.save_custom("override.cfg")
+
+
+func _enter_tree() -> void:
+	if not ProjectSettings.has_setting(FDLog.SettingPath.PRINT_LOG_LEVEL):
+		_setup_custom_setting(FDLog.SettingPath.PRINT_LOG_LEVEL, TYPE_BOOL, true)
+
+	for level: FDLog.LogLevel in FDLog.LogLevel.values():
+		if not ProjectSettings.has_setting(FDLog.SettingPath.ENABLE_LEVEL[level]):
+			_setup_custom_setting(
+					FDLog.SettingPath.ENABLE_LEVEL[level], TYPE_BOOL, true)
+			_setup_style_settings(level)
+	_setup_custom_setting(
+			FDLog.SettingPath.LOG_FILE_ROOT_DIR,
+			TYPE_STRING, "", { &"hint": PROPERTY_HINT_GLOBAL_DIR })
+	_setup_custom_setting(
+			FDLog.SettingPath.LOG_FILE_NAME_PREFIX, TYPE_STRING, "")
+
 	ProjectSettings.save()
 	ProjectSettings.save_custom("override.cfg")
 
@@ -43,7 +61,7 @@ func _setup_custom_setting(
 		initial_value: Variant,
 		args: Dictionary = {},
 		is_basic: bool = true) -> void:
-	if not ProjectSettings.get_setting(path):
+	if not ProjectSettings.has_setting(path):
 		ProjectSettings.set_setting(path, initial_value)
 	ProjectSettings.set_initial_value(path, initial_value)
 	ProjectSettings.add_property_info({

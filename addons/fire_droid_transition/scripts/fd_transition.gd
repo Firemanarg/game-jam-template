@@ -2,6 +2,7 @@
 class_name FDTransition
 extends CanvasLayer
 
+# ------------------------------------------------------------------------------
 
 ## Emitted when the transition start (by calling [method play], [method play_in] or [method play_out]).
 signal started
@@ -10,6 +11,7 @@ signal step_finished
 ## Emitted when the full cycle of transition finish (after calling [method play]).
 signal finished
 
+# ------------------------------------------------------------------------------
 
 # Setup
 @export_group("Setup")
@@ -36,6 +38,7 @@ signal finished
 @export_range(0.0, 1.0) var _custom_preview_out: float = 0.5:
 	set = _set_custom_preview_out
 
+# ------------------------------------------------------------------------------
 
 func _ready() -> void:
 	pass
@@ -48,6 +51,28 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	pass
 
+# ------------------------------------------------------------------------------
+
+# Overridable
+func _setup_play_in() -> void:
+	pass
+
+
+# Overridable
+func _setup_play_out() -> void:
+	pass
+
+
+# Overridable
+func _on_play_in(ratio: float) -> void:
+	pass
+
+
+# Overridable
+func _on_play_out(ratio: float) -> void:
+	pass
+
+# ------------------------------------------------------------------------------
 
 func play(
 	in_callback: Callable = func(): return,
@@ -91,26 +116,7 @@ func play_out(callback: Callable = func(): return) -> Variant:
 	step_finished.emit()
 	return result
 
-
-# Overridable
-func _setup_play_in() -> void:
-	pass
-
-
-# Overridable
-func _setup_play_out() -> void:
-	pass
-
-
-# Overridable
-func _on_play_in(ratio: float) -> void:
-	pass
-
-
-# Overridable
-func _on_play_out(ratio: float) -> void:
-	pass
-
+# ------------------------------------------------------------------------------
 
 func _set_custom_preview_in(value: float) -> void:
 	_custom_preview_in = value

@@ -1,6 +1,7 @@
 @tool
 extends FDTransition
 
+# ------------------------------------------------------------------------------
 
 @export_group("Fade Setup")
 @export var use_texture: bool = false:
@@ -13,10 +14,7 @@ var texture: Texture2D = null:
 @onready var color_rect: ColorRect = get_node("ColorRect")
 @onready var texture_rect: TextureRect = get_node("TextureRect")
 
-
-func _ready() -> void:
-	pass
-
+# ------------------------------------------------------------------------------
 
 func _property_can_revert(property: StringName) -> bool:
 	if property == &"texture" or property == &"color":
@@ -51,6 +49,7 @@ func _get_property_list() -> Array[Dictionary]:
 		})
 	return properties
 
+# ------------------------------------------------------------------------------
 
 # Overridable
 func _on_play_in(ratio: float) -> void:
@@ -63,6 +62,7 @@ func _on_play_out(ratio: float) -> void:
 	color_rect.modulate.a = ratio
 	texture_rect.modulate.a = ratio
 
+# ------------------------------------------------------------------------------
 
 func _set_use_texture(value: bool) -> void:
 	use_texture = value
