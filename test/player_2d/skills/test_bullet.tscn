@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b1iqqov8psbsk"]
+
+[ext_resource type="Script" uid="uid://bd2irlkxumr2" path="res://test/player_2d/skills/test_bullet.gd" id="1_5neeu"]
+[ext_resource type="Texture2D" uid="uid://ddhotmox8urxk" path="res://icon.svg" id="1_vrepq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6gdt"]
+size = Vector2(26, 6)
+
+[node name="TestBullet" type="CharacterBody2D" unique_id=807856367]
+top_level = true
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_5neeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1902783356]
+modulate = Color(3.4915338, 0, 0, 1)
+scale = Vector2(0.2, 0.05)
+texture = ExtResource("1_vrepq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=970239624]
+shape = SubResource("RectangleShape2D_e6gdt")

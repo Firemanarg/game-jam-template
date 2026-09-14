@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bw0wo6wgexcqb"]
+
+[ext_resource type="PackedScene" uid="uid://bicyj5wbev0r3" path="res://scenes/player/player_2d/player_2d.tscn" id="1_kgsy5"]
+[ext_resource type="Script" uid="uid://bfuhwpeyocigp" path="res://test/player_2d/skills/test_skill_simple_shoot.gd" id="2_kgsy5"]
+[ext_resource type="Texture2D" uid="uid://ddhotmox8urxk" path="res://icon.svg" id="3_k117l"]
+[ext_resource type="PackedScene" uid="uid://dy3gi3u8srdwj" path="res://scenes/player/behaviours/8_direction/8_direction.tscn" id="4_piqwm"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_s4vtj"]
+graph_offset = Vector2(-314, 30)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jxwsn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ymfh6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w511o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8myyf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ftq4e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hap0s"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mprp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4vtj"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kgsy5"]
+resource_local_to_scene = true
+states/Dead/node = SubResource("AnimationNodeBlendTree_s4vtj")
+states/Dead/position = Vector2(537, 100)
+states/End/position = Vector2(733, 100)
+states/Idle/node = SubResource("AnimationNodeBlendTree_jxwsn")
+states/Idle/position = Vector2(368, 26)
+states/Moving/node = SubResource("AnimationNodeBlendTree_ymfh6")
+states/Moving/position = Vector2(368, 180)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w511o"), "Idle", "Moving", SubResource("AnimationNodeStateMachineTransition_8myyf"), "Moving", "Idle", SubResource("AnimationNodeStateMachineTransition_ftq4e"), "Moving", "Dead", SubResource("AnimationNodeStateMachineTransition_hap0s"), "Idle", "Dead", SubResource("AnimationNodeStateMachineTransition_0mprp"), "Dead", "End", SubResource("AnimationNodeStateMachineTransition_s4vtj")]
+graph_offset = Vector2(-94, -66)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6gdt"]
+radius = 25.0
+
+[node name="TestLevel" type="Node2D" unique_id=1598276727]
+
+[node name="Player2D" parent="." unique_id=251185453 instance=ExtResource("1_kgsy5")]
+position = Vector2(215, 151)
+
+[node name="AnimationTree" parent="Player2D" index="1" unique_id=718835930]
+tree_root = SubResource("AnimationNodeStateMachine_kgsy5")
+
+[node name="TestSkillSimpleShoot" type="Node" parent="Player2D/SkillsRoot" parent_id_path=PackedInt32Array(251185453, 1954194391) index="0" unique_id=1357445189]
+script = ExtResource("2_kgsy5")
+input_action = &"attack"
+activation_type = 1
+cast_duration = 0.15
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2D" unique_id=1675492128]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_k117l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2D" unique_id=996137297]
+shape = SubResource("CircleShape2D_e6gdt")
+
+[node name="8Direction" parent="Player2D" unique_id=1476194262 instance=ExtResource("4_piqwm")]
+
+[editable path="Player2D"]
+[editable path="Player2D/8Direction"]
