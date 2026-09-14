@@ -7,9 +7,9 @@ extends CharacterBody2D
 @export var max_hp: float = 100.0
 
 @export_group("Movement")
-@export var movement_speed: float = 300.0
-@export var acceleration: float = 100.0
-@export var deacceleration: float = 100.0
+@export var movement_speed: float = 600.0
+@export var acceleration: float = 2500.0
+@export var deacceleration: float = 2200.0
 
 @export_group("Callbacks")
 @export var dead_callback: Callable
@@ -23,6 +23,10 @@ var _hp: float = max_hp
 
 # ------------------------------------------------------------------------------
 
+func _init() -> void:
+	_hp = max_hp
+
+
 func _ready() -> void:
 	pass
 
@@ -32,7 +36,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	pass
+	call_deferred(&"move_and_slide")
 
 # ------------------------------------------------------------------------------
 
@@ -43,7 +47,7 @@ func _on_death() -> void:
 # ------------------------------------------------------------------------------
 
 func is_alive() -> bool:
-	return _hp <= 0.0
+	return _hp > 0.0
 
 
 func set_animation(node_name: StringName) -> void:

@@ -7,7 +7,7 @@
 
 [node name="8Direction" type="Node" unique_id=1476194262 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_j3y2y")
-initial_state = NodePath("")
+initial_state = NodePath("Idle")
 enable_process = false
 metadata/_custom_type_script = "uid://cjbwf50bfmdxc"
 

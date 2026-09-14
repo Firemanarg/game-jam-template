@@ -26,7 +26,7 @@ func _s_physics_update(delta: float) -> void:
 	var direction: Vector2 = player.get_input_direction()
 
 	if not direction:
-		transition.emit(self, "Moving")
+		transition.emit(self, "Idle")
 		player.apply_friction(delta)
 		return
 

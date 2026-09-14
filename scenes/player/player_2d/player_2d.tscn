@@ -2,8 +2,38 @@
 
 [ext_resource type="Script" uid="uid://c2s5t7nimljyj" path="res://scenes/player/player_2d/player_2d.gd" id="1_s4vtj"]
 
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_s4vtj"]
+graph_offset = Vector2(-314, 30)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jxwsn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ymfh6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w511o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8myyf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ftq4e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hap0s"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mprp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4vtj"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg8bi"]
 resource_local_to_scene = true
+states/Dead/node = SubResource("AnimationNodeBlendTree_s4vtj")
+states/Dead/position = Vector2(537, 100)
+states/End/position = Vector2(733, 100)
+states/Idle/node = SubResource("AnimationNodeBlendTree_jxwsn")
+states/Idle/position = Vector2(368, 26)
+states/Moving/node = SubResource("AnimationNodeBlendTree_ymfh6")
+states/Moving/position = Vector2(368, 180)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w511o"), "Idle", "Moving", SubResource("AnimationNodeStateMachineTransition_8myyf"), "Moving", "Idle", SubResource("AnimationNodeStateMachineTransition_ftq4e"), "Moving", "Dead", SubResource("AnimationNodeStateMachineTransition_hap0s"), "Idle", "Dead", SubResource("AnimationNodeStateMachineTransition_0mprp"), "Dead", "End", SubResource("AnimationNodeStateMachineTransition_s4vtj")]
+graph_offset = Vector2(-94, -66)
 
 [node name="Player2D" type="CharacterBody2D" unique_id=251185453]
 script = ExtResource("1_s4vtj")

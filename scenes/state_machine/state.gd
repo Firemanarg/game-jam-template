@@ -11,12 +11,12 @@ func setup() -> void:
 
 
 func s_enter() -> void:
-	#print("Entered state ", self.name.to_lower())
+	print("Entered state ", self.name.to_lower())
 	_s_enter()
 
 
 func s_exit() -> void:
-	#print("Exited state ", self.name.to_lower())
+	print("Exited state ", self.name.to_lower())
 	_s_exit()
 
 
