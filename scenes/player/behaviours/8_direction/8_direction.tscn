@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dy3gi3u8srdwj"]
+
+[ext_resource type="Script" uid="uid://ct37bvmisagia" path="res://scenes/player/behaviours/8_direction/8_direction.gd" id="1_j3y2y"]
+[ext_resource type="Script" uid="uid://c4wuh1vnwsr25" path="res://scenes/player/behaviours/8_direction/8_direction_idle_state.gd" id="2_awgpq"]
+[ext_resource type="Script" uid="uid://bmlpe4n42lf3j" path="res://scenes/player/behaviours/8_direction/8_direction_moving_state.gd" id="3_eg8bi"]
+[ext_resource type="Script" uid="uid://djccaxg62eyd1" path="res://scenes/player/behaviours/8_direction/8_direction_dead_state.gd" id="4_awgpq"]
+
+[node name="8Direction" type="Node" unique_id=1476194262 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_j3y2y")
+initial_state = NodePath("")
+enable_process = false
+metadata/_custom_type_script = "uid://cjbwf50bfmdxc"
+
+[node name="Idle" type="Node" parent="." unique_id=1493919189]
+script = ExtResource("2_awgpq")
+metadata/_custom_type_script = "uid://bkv6f7jvp56mw"
+
+[node name="Moving" type="Node" parent="." unique_id=1680505136]
+script = ExtResource("3_eg8bi")
+metadata/_custom_type_script = "uid://bkv6f7jvp56mw"
+
+[node name="Dead" type="Node" parent="." unique_id=177766557]
+script = ExtResource("4_awgpq")
+metadata/_custom_type_script = "uid://bkv6f7jvp56mw"
