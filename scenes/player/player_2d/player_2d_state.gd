@@ -8,3 +8,27 @@ extends State
 		player.get_node("AnimationTree").get("parameters/playback"))
 
 # ------------------------------------------------------------------------------
+
+# Overridable
+func _setup() -> void:
+	pass
+
+
+# Overridable
+func _s_enter() -> void:
+	pass
+
+
+# Overridable
+func _s_exit() -> void:
+	pass
+
+
+# Overridable
+func _s_update(_delta: float) -> void:
+	pass
+
+
+# Overridable
+func _s_physics_update(_delta: float) -> void:
+	pass

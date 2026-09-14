@@ -47,3 +47,6 @@ unique_name_in_owner = true
 root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_eg8bi")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="SkillsRoot" type="Node" parent="." unique_id=1954194391]
+unique_name_in_owner = true

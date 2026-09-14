@@ -23,6 +23,8 @@ func _s_physics_update(delta: float) -> void:
 		transition.emit(self, "Dead")
 		return
 
+	player.update_skills_uses()
+
 	var direction: Vector2 = player.get_input_direction()
 
 	if not direction:
