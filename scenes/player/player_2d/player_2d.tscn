@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bicyj5wbev0r3"]
+
+[ext_resource type="Script" uid="uid://c2s5t7nimljyj" path="res://scenes/player/player_2d/player_2d.gd" id="1_s4vtj"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eg8bi"]
+resource_local_to_scene = true
+
+[node name="Player2D" type="CharacterBody2D" unique_id=251185453]
+script = ExtResource("1_s4vtj")
+metadata/_custom_type_script = "uid://c2s5t7nimljyj"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1452410919]
+unique_name_in_owner = true
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=718835930]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_eg8bi")
+anim_player = NodePath("../AnimationPlayer")
