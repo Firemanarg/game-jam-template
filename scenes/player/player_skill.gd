@@ -17,7 +17,6 @@ enum ActivationType {
 @export var cast_duration: float = 0.0
 ## -1 = unlimited cast count | 0 = cannot be castd | >0 = limited casts (consumable)
 @export var max_casts: int = -1
-@export var allow_casts_overflow_max: bool = false
 
 var _is_casting: bool = false
 var _cast_timer: SceneTreeTimer = null
@@ -89,7 +88,7 @@ func get_cooldown_time_left() -> float:
 	return _cooldown_timer.time_left
 
 
-func get_castd_count() -> int:
+func get_cast_count() -> int:
 	return _casts
 
 

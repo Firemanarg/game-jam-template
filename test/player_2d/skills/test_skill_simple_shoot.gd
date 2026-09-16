@@ -16,7 +16,6 @@ func _init() -> void:
 
 # ------------------------------------------------------------------------------
 
-
 # Overridable
 func _on_cast_started() -> void:
 	const BULLET_SCENE: PackedScene = preload("uid://b1iqqov8psbsk")
