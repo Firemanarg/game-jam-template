@@ -25,6 +25,8 @@ func _ready() -> void:
 	if initial_state:
 		initial_state.s_enter()
 		current_state = initial_state
+	else:
+		FDLog.log_warn("[%s]: No initial state was set." % self)
 
 
 func _process(delta: float) -> void:
