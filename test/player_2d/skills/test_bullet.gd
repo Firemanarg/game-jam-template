@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 
 @export var speed: float = 50000.0
+@export var lifetime: float = 5.0
 
 var direction: Vector2 = Vector2(0, 0)
 
 
 func _ready() -> void:
-	pass
+	get_tree().create_timer(lifetime).timeout.connect(queue_free)
 
 
 func _process(_delta: float) -> void:
