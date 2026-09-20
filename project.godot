@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 Action="*uid://bo21avqm1v2ko"
 FDLog="*uid://ch7hcmdpymwmi"
+Loading="*uid://bic2nsb4y5rbo"
 
 [display]
 
