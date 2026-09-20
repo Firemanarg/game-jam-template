@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bd6yq34e10gfv"
+path="res://.godot/imported/Kevin MacLeod - Thatched Villagers.mp3-cc1b7f0fe637469049130f4844bf806a.mp3str"
+
+[deps]
+
+source_file="res://test/loading_system/assets/Kevin MacLeod - Thatched Villagers.mp3"
+dest_files=["res://.godot/imported/Kevin MacLeod - Thatched Villagers.mp3-cc1b7f0fe637469049130f4844bf806a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

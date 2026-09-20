@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c77n16i8lcbkp"]
+
+[ext_resource type="AudioStream" uid="uid://bd6yq34e10gfv" path="res://test/loading_system/assets/Kevin MacLeod - Thatched Villagers.mp3" id="1_kw8x6"]
+[ext_resource type="PackedScene" uid="uid://cr24nc640ox2" path="res://test/loading_system/cat_scene.tscn" id="2_gla3l"]
+
+[node name="TestLoadingLevel" type="Node2D" unique_id=818467418]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1778030880]
+stream = ExtResource("1_kw8x6")
+autoplay = true
+
+[node name="CatScene" parent="." unique_id=901121457 instance=ExtResource("2_gla3l")]
+position = Vector2(191, 178)
+
+[node name="CatScene2" parent="." unique_id=616327301 instance=ExtResource("2_gla3l")]
+position = Vector2(944, 451)
