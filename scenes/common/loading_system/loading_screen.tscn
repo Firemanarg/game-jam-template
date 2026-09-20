@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c614al21aqpgp"]
+
+[ext_resource type="Script" uid="uid://bs3p8pps74wxi" path="res://scenes/common/loading_system/loading_screen.gd" id="1_m8yw1"]
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1475624813]
+script = ExtResource("1_m8yw1")
+paths_to_load = [null, null]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1637757075]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=847384864]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1934737059]
+layout_mode = 2
+
+[node name="LoadingText" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1305329978]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1025585332]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
