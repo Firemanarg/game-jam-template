@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bsm0uuipvhhkg"]
+
+[ext_resource type="PackedScene" uid="uid://c614al21aqpgp" path="res://scenes/common/loading_system/loading_screen.tscn" id="1_6ce2t"]
+[ext_resource type="Script" uid="uid://bfs10emnu2r4x" path="res://test/loading_system/test_loading_screen.gd" id="2_jakvu"]
+
+[node name="TestLoadingScreen" unique_id=1475624813 instance=ExtResource("1_6ce2t")]
+script = ExtResource("2_jakvu")

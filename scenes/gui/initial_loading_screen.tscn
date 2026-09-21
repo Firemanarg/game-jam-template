@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cdk8jqdykligq"]
+
+[ext_resource type="PackedScene" uid="uid://bn7muet5m37op" path="res://scenes/common/loading_system/action_loading_screen.tscn" id="1_aidf7"]
+
+[node name="InitialLoadingScreen" unique_id=478888503 instance=ExtResource("1_aidf7")]
+context = &"initial_loading_screen"
+next_scene = "res://scenes/gui/main_screen.tscn"
+paths_to_load = ["res://scenes/gui/main_screen.tscn", "res://scenes/gui/settings_screen.tscn", "res://scenes/gui/level_selection_screen.tscn", "res://scenes/gui/credits_screen.tscn"]
+load_pre_delay = 0.5

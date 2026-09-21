@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bn7muet5m37op"]
+
+[ext_resource type="PackedScene" uid="uid://c614al21aqpgp" path="res://scenes/common/loading_system/loading_screen.tscn" id="1_y13at"]
+[ext_resource type="Script" uid="uid://bugdxiybcjnk0" path="res://scenes/common/loading_system/action_loading_screen.gd" id="2_64jx3"]
+
+[node name="ActionLoadingScreen" unique_id=478888503 instance=ExtResource("1_y13at")]
+script = ExtResource("2_64jx3")
+context = &"loading_screen"
+success_load_action = &"finished"
+fail_load_action = &"failed"
+next_scene = ""
