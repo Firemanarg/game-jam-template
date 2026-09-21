@@ -2,7 +2,7 @@ extends Node
 
 # ------------------------------------------------------------------------------
 
-var _load_requests: Dictionary = {}
+var _active_load_requests: Dictionary = {}
 
 # ------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	_process_load_requests()
+	_process_active_load_requests()
 
 
 func _physics_process(_delta: float) -> void:
@@ -35,7 +35,7 @@ func _load_async(
 		on_load_finished.call(ResourceLoader.load(resource_path))
 		return
 
-	if not _load_requests.has(resource_path):
+	if not _active_load_requests.has(resource_path):
 		var error_code: Error = (
 				ResourceLoader.load_threaded_request(resource_path, "", true))
 		if not error_code == OK:
@@ -45,52 +45,65 @@ func _load_async(
 					])
 			on_load_finished.call(null)
 			return
-		_load_requests[resource_path] = {
+		_active_load_requests[resource_path] = {
 			&"completion_callbacks": [], &"progress_callbacks": []
 		}
 
-	_load_requests[resource_path].completion_callbacks.append(on_load_finished)
+	_active_load_requests[resource_path].completion_callbacks.append(on_load_finished)
 	if on_progress_updated.is_valid():
-		_load_requests[resource_path].progress_callbacks.append(on_load_finished)
+		_active_load_requests[resource_path].progress_callbacks.append(on_progress_updated)
 
 
-func _process_load_requests() -> void:
-	if _load_requests.is_empty():
+func _process_active_load_requests() -> void:
+	if _active_load_requests.is_empty():
 		return
 
-	var loaded_resources_paths: Array[String] = []
-	for path: String in _load_requests.keys():
+	var completed_resource_paths: Array[String] = []
+	for resource_path: String in _active_load_requests.keys():
 		var progress_array: Array = []
 		var load_status: ResourceLoader.ThreadLoadStatus = (
-				ResourceLoader.load_threaded_get_status(path, progress_array))
+				ResourceLoader.load_threaded_get_status(resource_path, progress_array))
 		match load_status:
 			ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 				var progress: float = progress_array[0] as float
-				var progress_callbacks_array: Array[Callable] = (
-						_load_requests[path].progress_callbacks)
+				var progress_callbacks_array: Array = (
+						_active_load_requests[resource_path].progress_callbacks)
 				for callback_method: Callable in progress_callbacks_array:
 					if callback_method.is_valid():
 						callback_method.call(progress)
 
 			ResourceLoader.THREAD_LOAD_LOADED:
 				var loaded_resource: Resource = (
-						ResourceLoader.load_threaded_get(path))
-				var completion_callbacks_array: Array[Callable] = (
-						_load_requests[path].completion_callbacks)
+						ResourceLoader.load_threaded_get(resource_path))
+				var progress_callbacks_array: Array = (
+						_active_load_requests[resource_path].progress_callbacks)
+				for callback_method: Callable in progress_callbacks_array:
+					if callback_method.is_valid():
+						callback_method.call(1.0)
+				var completion_callbacks_array: Array = (
+						_active_load_requests[resource_path].completion_callbacks)
 				for callback_method: Callable in completion_callbacks_array:
 					if callback_method.is_valid():
 						callback_method.call(loaded_resource)
-				loaded_resources_paths.append(path)
+				completed_resource_paths.append(resource_path)
 
-			ResourceLoader.THREAD_LOAD_FAILED,\
+			ResourceLoader.THREAD_LOAD_FAILED:
+				FDLog.log_err(
+						"[Loading]: Threaded load failed for \"%s\"" % resource_path)
+				var completion_callbacks_array: Array = (
+						_active_load_requests[resource_path].completion_callbacks)
+				for callback_method: Callable in completion_callbacks_array:
+					if callback_method.is_valid():
+						callback_method.call(null)
 			ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 				FDLog.log_err(
-						"[Loading]: Error during threaded request for \"%s\"" % [
-							path,
-						])
-				var completion_callbacks_array: Array[Callable] = (
-						_load_requests[path].completion_callbacks)
+						"[Loading]: Threaded load found invalid resource "
+						+ "for \"%s\"" % resource_path)
+				var completion_callbacks_array: Array = (
+						_active_load_requests[resource_path].completion_callbacks)
 				for callback_method: Callable in completion_callbacks_array:
 					if callback_method.is_valid():
 						callback_method.call(null)
 
+	for resource_path: String in completed_resource_paths:
+		_active_load_requests.erase(resource_path)
