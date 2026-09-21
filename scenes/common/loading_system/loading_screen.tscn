@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bs3p8pps74wxi" path="res://scenes/common/loading_system/loading_screen.gd" id="1_m8yw1"]
 
-[node name="LoadingScreen" type="CanvasLayer" unique_id=1475624813]
+[node name="LoadingScreen" type="CanvasLayer" unique_id=478888503]
 script = ExtResource("1_m8yw1")
-paths_to_load = [null, null]
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1637757075]
 anchors_preset = 15
