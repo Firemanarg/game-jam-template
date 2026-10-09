@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhpqwgifrnflk"]
+
+[ext_resource type="PackedScene" uid="uid://c614al21aqpgp" path="res://scenes/common/loading_system/loading_screen.tscn" id="1_qgjew"]
+[ext_resource type="Script" uid="uid://s7lig2s312mb" path="res://test/audio_manager/test_loading_screen.gd" id="2_r8dx1"]
+
+[node name="TestLoadingScreen" unique_id=1475624813 instance=ExtResource("1_qgjew")]
+script = ExtResource("2_r8dx1")
+paths_to_load = ["res://test/audio_manager/test_main_screen.tscn", "res://test/audio_manager/assets/sfx_test_audio_group.tres", "res://test/audio_manager/assets/bgm_test_audio_group.tres"]
