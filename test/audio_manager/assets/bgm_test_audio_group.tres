@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioGroup" format=3 uid="uid://vgxbqr6yan1x"]
+
+[ext_resource type="AudioStream" uid="uid://csiimqnqkvdv8" path="res://test/audio_manager/assets/Kevin MacLeod - Thatched Villagers.mp3" id="1_p0jh3"]
+[ext_resource type="AudioStream" uid="uid://dwp13vxwvgaqo" path="res://test/audio_manager/assets/Kevin MacLeod - Bushwick Tarentella.ogg" id="2_dikm4"]
+[ext_resource type="Script" uid="uid://d2ivhb7oiw4hi" path="res://scenes/common/audio_manager/audio_group.gd" id="2_p0jh3"]
+
+[resource]
+script = ExtResource("2_p0jh3")
+content = Dictionary[StringName, AudioStream]({
+&"music_1": ExtResource("1_p0jh3"),
+&"music_2": ExtResource("2_dikm4")
+})
+metadata/_custom_type_script = "uid://d2ivhb7oiw4hi"

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AudioSettings" format=3 uid="uid://cxuldc155rijc"]
+
+[ext_resource type="Script" uid="uid://dqlfn85cj6qcw" path="res://scenes/common/audio_manager/audio_settings.gd" id="1_o0y8o"]
+
+[resource]
+script = ExtResource("1_o0y8o")
+metadata/_custom_type_script = "uid://dqlfn85cj6qcw"

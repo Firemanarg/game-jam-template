@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgbakgufgrw1w"]
+
+[ext_resource type="Script" uid="uid://c0y2s08hy5087" path="res://test/audio_manager/test_main_screen.gd" id="1_w77l6"]
+[ext_resource type="PackedScene" uid="uid://c4uik1qf5xdu0" path="res://test/audio_manager/cat_scene.tscn" id="2_x0aoj"]
+
+[node name="TestMainScreen" type="Node2D" unique_id=818467418]
+script = ExtResource("1_w77l6")
+
+[node name="CatScene" parent="." unique_id=901121457 instance=ExtResource("2_x0aoj")]
+position = Vector2(191, 178)
+
+[node name="CatScene2" parent="." unique_id=616327301 instance=ExtResource("2_x0aoj")]
+position = Vector2(944, 451)
+
+[connection signal="pressed" from="CatScene" to="." method="_on_cat_scene_pressed"]
+[connection signal="pressed" from="CatScene2" to="." method="_on_cat_scene_2_pressed"]

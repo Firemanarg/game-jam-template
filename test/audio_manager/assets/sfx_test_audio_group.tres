@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioGroup" format=3 uid="uid://k8xygyou4puw"]
+
+[ext_resource type="AudioStream" uid="uid://c0splx40i5pcc" path="res://test/audio_manager/assets/sfx_meow.wav" id="1_bdxn7"]
+[ext_resource type="Script" uid="uid://d2ivhb7oiw4hi" path="res://scenes/common/audio_manager/audio_group.gd" id="1_o3ctk"]
+
+[resource]
+script = ExtResource("1_o3ctk")
+content = Dictionary[StringName, AudioStream]({
+&"meow": ExtResource("1_bdxn7")
+})
+metadata/_custom_type_script = "uid://d2ivhb7oiw4hi"
