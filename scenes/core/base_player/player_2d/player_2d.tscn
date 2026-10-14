@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bicyj5wbev0r3"]
 
-[ext_resource type="Script" uid="uid://c2s5t7nimljyj" path="res://scenes/player/player_2d/player_2d.gd" id="1_s4vtj"]
+[ext_resource type="Script" uid="uid://c2s5t7nimljyj" path="res://scenes/core/base_player/player_2d/player_2d.gd" id="1_s4vtj"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_s4vtj"]
 graph_offset = Vector2(-314, 30)

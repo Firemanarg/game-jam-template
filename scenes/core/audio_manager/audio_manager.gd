@@ -186,4 +186,3 @@ func _apply_settings_to_audio_player(
 
 	audio_player.set_volume_db(audio_settings.volume_db)
 	audio_player.set_pitch_scale(pitch_scale)
-

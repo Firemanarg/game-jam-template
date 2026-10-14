@@ -45,12 +45,6 @@ func _physics_process(_delta: float) -> void:
 func _on_death() -> void:
 	pass
 
-
-## Overridable
-#@warning_ignore("unused_parameter")
-#func _on_skill_use(index: int, skill: Player2DSkill) -> void:
-	#pass
-
 # ------------------------------------------------------------------------------
 
 func apply_friction(delta: float) -> void:
@@ -77,15 +71,6 @@ func update_skills_uses() -> void:
 		if not skill:
 			continue
 		skill.attempt_cast_skill()
-
-
-#func use_skill(index: int) -> void:
-	#if not allow_skills:
-		#FDLog.log_debug("[Player2D]: Player skills are disabled.")
-		#return
-#
-	#FDLog.log_debug("[Player2D]: Player is using skill")
-	#_on_skill_use(index, skills_root.get_child(index))
 
 
 func attempt_death() -> bool:
