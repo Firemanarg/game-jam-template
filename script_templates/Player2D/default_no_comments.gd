@@ -25,8 +25,3 @@ func _physics_process(delta: float) -> void:
 # Overridable
 func _on_death() -> void:
 	pass
-
-
-# Overridable
-func _on_attack(index: int, args: Array = []) -> void:
-	pass

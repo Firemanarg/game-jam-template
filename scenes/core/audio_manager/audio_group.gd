@@ -25,4 +25,3 @@ func update_bus_index() -> void:
 
 func get_content_stream(id: StringName) -> AudioStream:
 	return content.get(id)
-
